@@ -1,6 +1,6 @@
 ﻿using Service.Logger.Api;
 using Service.Logger.Internal;
-using Playttention.Framework.Tools.VContainer;
+using Tools.VContainer;
 using UnityEngine;
 using VContainer;
 

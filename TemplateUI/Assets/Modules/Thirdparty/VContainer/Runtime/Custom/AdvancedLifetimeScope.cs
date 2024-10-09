@@ -2,7 +2,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Playttention.Framework.Tools.VContainer
+namespace Tools.VContainer
 {
     public class AdvancedLifetimeScope : LifetimeScope
     {

@@ -1,5 +1,5 @@
 using Service.StateMachine.Internal;
-using Playttention.Framework.Tools.VContainer;
+using Tools.VContainer;
 using UnityEngine;
 using VContainer;
 

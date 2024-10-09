@@ -1,6 +1,6 @@
 using VContainer;
 
-namespace Playttention.Framework.Tools.VContainer
+namespace Tools.VContainer
 {
     public static class InstallersExtensions
     {

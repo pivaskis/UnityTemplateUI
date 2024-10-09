@@ -1,7 +1,7 @@
 using UnityEngine;
 using VContainer;
 
-namespace Playttention.Framework.Tools.VContainer
+namespace Tools.VContainer
 {
     public abstract class MonoInstaller : MonoBehaviour
     {
