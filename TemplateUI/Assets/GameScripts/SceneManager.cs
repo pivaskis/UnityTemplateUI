@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,8 @@ public class SceneManager : MonoBehaviour
 	public Button MainMenuButton;
 	public Button GameOptionButton;
 
+	public TextMeshProUGUI YouWinTxt;
+
 	private void OnEnable()
 	{
 		levelsController.OnLevelSelected += OnLevelSelected;
@@ -29,11 +32,11 @@ public class SceneManager : MonoBehaviour
 	public void OpenMainScene() =>
 		StartCoroutine(OpenMainSceneCoroutine());
 
-	private void OnLevelComplete(bool isCompleted)
+	private void OnLevelComplete(bool isCompleted,int gameCoins )
 	{
 		if (isCompleted)
 		{
-			OpenYouWin();
+			OpenYouWin(gameCoins);
 		}
 		else
 		{
@@ -77,9 +80,10 @@ public class SceneManager : MonoBehaviour
 		LevelsMenu.SetActive(true);
 	}
 
-	public void OpenYouWin()
+	public void OpenYouWin(int gameCoins)
 	{
 		YouWinMenu.SetActive(true);
+		YouWinTxt.text = gameCoins.ToString();
 	}
 
 	private IEnumerator OpenGameSceneCoroutine(int levelNumber)

@@ -19,19 +19,16 @@ public class GameController : MonoBehaviour
 	public TextMeshProUGUI LevelTxt;
 	public TextMeshProUGUI NeedFuelTxt;
 
-	public event Action<bool> LevelComplete;
+	public event Action<bool, int> LevelComplete;
 
 	private int _counter = 0;
 	private int winnableScore;
+	private int GameCoins;
 	private IEnumerator spawnerCoroutine;
 	private int currentLevelNumber;
 
 	public Animation boxesAnimation;
 	public Animation BallSpawnerAnimation;
-
-
-	private void Start() =>
-		boxController.MultiplayerCounter += MultiplayCounter;
 
 	private IEnumerator BallSpawnerCoroutine()
 	{
@@ -51,6 +48,8 @@ public class GameController : MonoBehaviour
 
 	public void LoadLevel(int levelNumber)
 	{
+		boxController.MultiplayerCounter += MultiplayCounter;
+		
 		SetLevelConfig(levelNumber);
 		_counter = 0;
 		counterText.text = _counter.ToString();
@@ -74,6 +73,7 @@ public class GameController : MonoBehaviour
 		if (_counter >= winnableScore)
 		{
 			YouWin();
+			boxController.MultiplayerCounter -= MultiplayCounter;
 		}
 		else if (ballsCount == 0 && createdBallsCount == 0)
 		{
@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
 	private void TryAgain()
 	{
 		EnableAnimation(false);
-		LevelComplete?.Invoke(false);
+		LevelComplete?.Invoke(false, 0);
 	}
 
 	private void EnableAnimation(bool isEnabled)
@@ -106,7 +106,8 @@ public class GameController : MonoBehaviour
 		StopCoroutine(spawnerCoroutine);
 		int nextLevelNumber = currentLevelNumber + 1;
 		PlayerPrefs.SetInt("level " + nextLevelNumber, 1);
-		LevelComplete?.Invoke(true);
+		LevelComplete?.Invoke(true, GameCoins);
+		PlayerController.playerController.GameCoins += GameCoins;
 		EnableAnimation(false);
 	}
 
@@ -116,5 +117,6 @@ public class GameController : MonoBehaviour
 		currentLevelNumber = config.levelNumber;
 		ballsCount = config.ballsCount;
 		winnableScore = config.winnableScore;
+		GameCoins = config.LevelScore;
 	}
 }
