@@ -32,6 +32,12 @@ public class SceneManager : MonoBehaviour
 	{
 		levelsController.OnLevelSelected += OnLevelSelected;
 		gameController.LevelComplete += OnLevelComplete;
+
+		if (PlayerPrefs.GetInt("SceneManager_" + "IstTutorialShowed", 0) == 0)
+		{
+			OpenTutorialMenu();
+			PlayerPrefs.SetInt("SceneManager_" + "IstTutorialShowed", 1);
+		}
 	}
 
 	public void OpenTutorialMenu()
