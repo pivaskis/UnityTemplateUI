@@ -13,6 +13,7 @@ public class SceneManager : MonoBehaviour
 	public GameObject LevelsMenu;
 	public GameObject YouWinMenu;
 	public GameObject TryAgain;
+	public GameObject ShopMenu;
 	public LevelsController levelsController;
 	public GameController gameController;
 
@@ -20,13 +21,31 @@ public class SceneManager : MonoBehaviour
 	public Button OptionButton;
 	public Button MainMenuButton;
 	public Button GameOptionButton;
+	public Button ShopButton;
 
 	public TextMeshProUGUI YouWinTxt;
+
 
 	private void OnEnable()
 	{
 		levelsController.OnLevelSelected += OnLevelSelected;
 		gameController.LevelComplete += OnLevelComplete;
+	}
+
+	public void OpenShopScene()
+	{
+		StartCoroutine(OpenShopSceneCoroutine());
+	}
+
+	private IEnumerator OpenShopSceneCoroutine()
+	{
+		PlayButton.interactable = false;
+		OptionButton.interactable = false;
+		ShopButton.interactable = false;
+		yield return new WaitForSeconds(1);
+		MainMenu.SetActive(false);
+		levelsController.SetInteractable(true);
+		ShopMenu.SetActive(true);
 	}
 
 	public void OpenMainScene() =>
@@ -60,9 +79,12 @@ public class SceneManager : MonoBehaviour
 		yield return new WaitForSeconds(1);
 		GameScene.SetActive(false);
 		GameMenu.SetActive(false);
+		ShopMenu.SetActive(false);
+		YouWinMenu.SetActive(false);
 		MainMenu.SetActive(true);
 		PlayButton.interactable = true;
 		OptionButton.interactable = true;
+		ShopButton.interactable = true;
 	}
 
 	public void OpenLevelsMenu()

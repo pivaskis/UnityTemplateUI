@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
@@ -18,6 +20,8 @@ public class GameController : MonoBehaviour
 
 	public TextMeshProUGUI LevelTxt;
 	public TextMeshProUGUI NeedFuelTxt;
+
+	public Image shipImage;
 
 	public event Action<bool, int> LevelComplete;
 
@@ -48,8 +52,9 @@ public class GameController : MonoBehaviour
 
 	public void LoadLevel(int levelNumber)
 	{
+		shipImage.sprite = PlayerController.playerController.Ship.Skin;
 		boxController.MultiplayerCounter += MultiplayCounter;
-		
+
 		SetLevelConfig(levelNumber);
 		_counter = 0;
 		counterText.text = _counter.ToString();
