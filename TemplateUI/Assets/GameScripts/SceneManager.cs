@@ -14,6 +14,7 @@ public class SceneManager : MonoBehaviour
 	public GameObject YouWinMenu;
 	public GameObject TryAgain;
 	public GameObject ShopMenu;
+	public GameObject TutorialMenu;
 	public LevelsController levelsController;
 	public GameController gameController;
 
@@ -22,6 +23,7 @@ public class SceneManager : MonoBehaviour
 	public Button MainMenuButton;
 	public Button GameOptionButton;
 	public Button ShopButton;
+	public Button TutorialButton;
 
 	public TextMeshProUGUI YouWinTxt;
 
@@ -30,6 +32,16 @@ public class SceneManager : MonoBehaviour
 	{
 		levelsController.OnLevelSelected += OnLevelSelected;
 		gameController.LevelComplete += OnLevelComplete;
+	}
+
+	public void OpenTutorialMenu()
+	{
+		TutorialMenu.SetActive(true);
+	}
+
+	public void CloseTutorialMenu()
+	{
+		TutorialMenu.SetActive(false);
 	}
 
 	public void OpenShopScene()
@@ -51,7 +63,7 @@ public class SceneManager : MonoBehaviour
 	public void OpenMainScene() =>
 		StartCoroutine(OpenMainSceneCoroutine());
 
-	private void OnLevelComplete(bool isCompleted,int gameCoins )
+	private void OnLevelComplete(bool isCompleted, int gameCoins)
 	{
 		if (isCompleted)
 		{
@@ -63,7 +75,7 @@ public class SceneManager : MonoBehaviour
 		}
 	}
 
-	private void OpenTryAgain() => 
+	private void OpenTryAgain() =>
 		TryAgain.SetActive(true);
 
 
