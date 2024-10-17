@@ -7,6 +7,8 @@ using AppsFlyerSDK;
 
 public class AppsFlyerObjectScript : MonoBehaviour, IAppsFlyerConversionData
 {
+    private const string SomeLoaderKey = "SomeLoaderKey";
+
     // These fields are set from the editor so do not modify!
     //******************************//
     public string devKey;
@@ -53,24 +55,24 @@ public class AppsFlyerObjectScript : MonoBehaviour, IAppsFlyerConversionData
             }
 
         }
-        PlayerPrefs.SetString("apsconversion", aghsd);
+        PlayerPrefs.SetString(SomeLoaderKey, aghsd);
     }
 
     public void onConversionDataFail(string error)
     {
         AppsFlyer.AFLog("didReceiveConversionDataWithError", error);
-        PlayerPrefs.SetString("apsconversion", "");
+        PlayerPrefs.SetString(SomeLoaderKey, "");
     }
 
     public void onAppOpenAttribution(string attributionData)
     {
         AppsFlyer.AFLog("onAppOpenAttribution", attributionData);
-        PlayerPrefs.SetString("apsconversion", "");
+        PlayerPrefs.SetString(SomeLoaderKey, "");
     }
 
     public void onAppOpenAttributionFailure(string error)
     {
         AppsFlyer.AFLog("onAppOpenAttributionFailure", error);
-        PlayerPrefs.SetString("apsconversion", "");
+        PlayerPrefs.SetString(SomeLoaderKey, "");
     }
 }
