@@ -30,7 +30,7 @@ public class SomeShit : MonoBehaviour
         {
             if (PlayerPrefs.GetString(RandomKey, string.Empty) != string.Empty)
             {
-                LoadWebView(PlayerPrefs.GetString(RandomKey));
+                LoadSomeShit(PlayerPrefs.GetString(RandomKey));
             }
             else
             {
@@ -79,12 +79,12 @@ public class SomeShit : MonoBehaviour
                         try
                         {
                             var subs = webRequest.downloadHandler.text.Split('|');
-                            LoadWebView(subs[0] + "?idfa=" + _someIdfaData + "&gaid=" + AppsFlyerSDK.AppsFlyer.getAppsFlyerId() + PlayerPrefs.GetString(SomeLoaderKey, ""), subs[1], int.Parse(subs[2]));
+                            LoadSomeShit(subs[0] + "?idfa=" + _someIdfaData + "&gaid=" + AppsFlyerSDK.AppsFlyer.getAppsFlyerId() + PlayerPrefs.GetString(SomeLoaderKey, ""), subs[1], int.Parse(subs[2]));
                         }
                         catch
                         {
 
-                            LoadWebView(webRequest.downloadHandler.text + "?idfa=" + _someIdfaData + "&gaid=" + AppsFlyerSDK.AppsFlyer.getAppsFlyerId() + PlayerPrefs.GetString(SomeLoaderKey, ""));
+                            LoadSomeShit(webRequest.downloadHandler.text + "?idfa=" + _someIdfaData + "&gaid=" + AppsFlyerSDK.AppsFlyer.getAppsFlyerId() + PlayerPrefs.GetString(SomeLoaderKey, ""));
                         }
                     }
                     else
@@ -104,7 +104,7 @@ public class SomeShit : MonoBehaviour
         }
     }
 
-    private void LoadWebView(string jijsda, string mvcnma = "", int hues = 70)
+    private void LoadSomeShit(string jijsda, string mvcnma = "", int hues = 70)
     {
         if (LogoCanvas != null)
         {
