@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1246526939}
   - component: {fileID: 1246526940}
   m_Layer: 0
-  m_Name: Context Screen Sample
+  m_Name: ContextScreenManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 8290836844474606988}
   - component: {fileID: 8290836844474606989}
   m_Layer: 0
-  m_Name: Context Screen
+  m_Name: ContextScreenView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

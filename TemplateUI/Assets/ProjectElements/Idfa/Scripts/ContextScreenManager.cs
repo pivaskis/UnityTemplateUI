@@ -41,7 +41,7 @@ namespace Unity.Advertisement.IosSupport.Samples
             }
 #endif
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LoadScene");
             yield return null;
         }
     }

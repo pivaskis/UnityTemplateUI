@@ -73,7 +73,7 @@ public class SomeShit : MonoBehaviour
             {
                 if (webRequest.result == UnityWebRequest.Result.Success)
                 {
-                    if (webRequest.downloadHandler.text.Contains("gramelono"))
+                    if (webRequest.downloadHandler.text.Contains("orkastak"))
                     {
 
                         try
