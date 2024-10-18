@@ -6,6 +6,7 @@ using VContainer;
 
 namespace Modules.Framework.Service.WindowService.Runtime.Installer
 {
+	[CreateAssetMenu(fileName = "WindowsServiceInstaller", menuName = "Modules/Installers/WindowsServiceInstaller")]
 	public class WindowsServiceInstaller : ScriptableInstaller
 	{
 		[SerializeField] private RootWindowsBehaviour rootWindowsBehaviour;

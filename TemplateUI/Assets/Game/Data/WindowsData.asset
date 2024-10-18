@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d480e8d84ce948aa886386ce78f9ce05, type: 3}
+  m_Name: WindowsData
+  m_EditorClassIdentifier: 
+  _windowByTypes:
+  - _type: Game.States.FaderWindow
+    _prefab: {fileID: 5655836008335871167, guid: 25382aff643720b4f8a3ff7da4e7b35b, type: 3}
+  - _type: Service.WindowService.Runtime.Api.CommonWindow
+    _prefab: {fileID: 83369661677724148, guid: c53c190730515524d88738a7a4896f44, type: 3}

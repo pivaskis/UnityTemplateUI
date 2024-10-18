@@ -159,6 +159,7 @@ MonoBehaviour:
   scriptableInstallers:
   - {fileID: 11400000, guid: d047034629f896d44802ff5e28928829, type: 2}
   - {fileID: 11400000, guid: a907826a304c7f045814f7bec2968d00, type: 2}
+  - {fileID: 11400000, guid: 10cb912c3a188764ba048c9c4d93a389, type: 2}
   monoInstallers: []
 --- !u!4 &328899550
 Transform:

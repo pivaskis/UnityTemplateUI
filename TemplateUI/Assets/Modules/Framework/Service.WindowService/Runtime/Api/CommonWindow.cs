@@ -1,16 +1,10 @@
 using Cysharp.Threading.Tasks;
-using Service.WindowService.Runtime.Api;
 
-namespace Game.States
+namespace Service.WindowService.Runtime.Api
 {
-	public class FaderWindow : Window, ICommonWindow
+	public class CommonWindow : Window, ICommonWindow
 	{
 		public void Dispose()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public UniTask Initialize()
 		{
 			throw new System.NotImplementedException();
 		}
@@ -21,6 +15,11 @@ namespace Game.States
 		}
 
 		public UniTask Close()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public UniTask Initialize()
 		{
 			throw new System.NotImplementedException();
 		}
