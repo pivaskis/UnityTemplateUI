@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,41 +10,49 @@ public class LevelsController : MonoBehaviour
 
 	public GameObject NextButtonImg;
 	public GameObject BackButtonImg;
+	public GameObject LevelIcon;
 
+	[SerializeField] private LevelsConfig _levelsConfig;
+	private List<Button> levelsButtons = new();
 
-	private void Start()
+	private void Awake()
 	{
-		foreach (GameObject greed in GreedLevels)
+		int levelsCount = _levelsConfig.Levels.Count;
+
+		int greedCounter = 0;
+
+		for (int i = 0; i < levelsCount; i++)
 		{
-			foreach (Transform levelTransform in greed.transform)
-			{
-				var level = levelTransform.GetComponent<Level>();
-				level.OnLevelSelected += LevelSelected;
-			}
+			var level = Instantiate(LevelIcon, GreedLevels[greedCounter].transform).GetComponent<Level>();
+			level.levelNumber = i + 1;
+			level.OnLevelSelected += LevelSelected;
+
+			levelsButtons.Add(level.GetComponent<Button>());
 		}
 	}
 
-	public void SetInteractable(bool isInteractable)
+	private void OnEnable()
 	{
-		foreach (GameObject greed in GreedLevels)
-		{
-			foreach (Transform levelTransform in greed.transform)
-			{
-				var levelButton = levelTransform.GetComponent<Button>();
-				levelButton.interactable = isInteractable;
-			}
-		}
+		SetInteractable(true);
+	}
+
+	private void SetInteractable(bool isInteractable)
+	{
+		foreach (Button levelButton in levelsButtons) levelButton.interactable = isInteractable;
 	}
 
 	public void NextLevelsPage()
 	{
-		foreach (GameObject greed in GreedLevels) 
+		foreach (GameObject greed in GreedLevels)
 			greed.gameObject.SetActive(!greed.gameObject.activeSelf);
-		
+
 		NextButtonImg.SetActive(!NextButtonImg.activeSelf);
 		BackButtonImg.SetActive(!BackButtonImg.activeSelf);
 	}
 
-	private void LevelSelected(int levelNumber) =>
+	private void LevelSelected(int levelNumber)
+	{
+		SetInteractable(false);
 		OnLevelSelected?.Invoke(levelNumber);
+	}
 }

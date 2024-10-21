@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: ShipsConfig
   m_EditorClassIdentifier: 
   Ships:
-  - ShipName: 0
-    Skin: {fileID: 21300000, guid: 7e77f2aecf4869d4592e7387e1e4732e, type: 3}
-    Icon: {fileID: 21300000, guid: 4e9c52c5a8d1ac740885f72150b7e486, type: 3}
+  - BallName: 0
+    Skin: {fileID: 21300000, guid: 691cc89a37db965459d40be50fd7ef57, type: 3}
+    Icon: {fileID: 21300000, guid: 691cc89a37db965459d40be50fd7ef57, type: 3}
     Price: 0
-  - ShipName: 1
-    Skin: {fileID: 21300000, guid: d4851afb83da2cd42abbe6a862b8cb41, type: 3}
-    Icon: {fileID: 21300000, guid: f7a9cde8b3c0d35429a0b0a9ca11cb8f, type: 3}
+    physicsMaterial: {fileID: 6200000, guid: 8023ede68024f5542897dd411dae4113, type: 2}
+  - BallName: 1
+    Skin: {fileID: 21300000, guid: 74ec30392c71aaa48927675d487a26b5, type: 3}
+    Icon: {fileID: 21300000, guid: 74ec30392c71aaa48927675d487a26b5, type: 3}
     Price: 10
-  - ShipName: 2
-    Skin: {fileID: 21300000, guid: 51fe0460af287d24e90b55334cfeb533, type: 3}
-    Icon: {fileID: 21300000, guid: cdeecb7e70264e54dacf5b4b48d081ac, type: 3}
-    Price: 10
-  - ShipName: 3
-    Skin: {fileID: 21300000, guid: a776414def5d3934e9db5965890f4f5e, type: 3}
-    Icon: {fileID: 21300000, guid: ab776e3e657ad5949ac8611c39b1e5ef, type: 3}
-    Price: 10
+    physicsMaterial: {fileID: 6200000, guid: 806b9b5f90be5c840a7a28ddbc18a4ba, type: 2}
+  - BallName: 2
+    Skin: {fileID: 21300000, guid: b91c4b79d8cee9e4da058f2cbb81efce, type: 3}
+    Icon: {fileID: 21300000, guid: b91c4b79d8cee9e4da058f2cbb81efce, type: 3}
+    Price: 30
+    physicsMaterial: {fileID: 6200000, guid: eaeb43ab1b8c22d40898e1482fedd435, type: 2}
+  - BallName: 3
+    Skin: {fileID: 21300000, guid: 255f3db645475eb44afb4d02d73369e3, type: 3}
+    Icon: {fileID: 21300000, guid: 255f3db645475eb44afb4d02d73369e3, type: 3}
+    Price: 50
+    physicsMaterial: {fileID: 6200000, guid: 4624191e04e6f8c4ea4d6284c8a4ae7b, type: 2}

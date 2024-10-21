@@ -6,11 +6,13 @@ public class BallSpawner : MonoBehaviour
 	public AudioSource audioSource;
 
 	[ContextMenu("CreateBall")]
-	public void CreateBall()
+	public GameObject CreateBall()
 	{
 		GameObject createdBall = Instantiate(ball);
 		createdBall.transform.position = transform.position;
 		createdBall.SetActive(true);
 		audioSource.Play();
+
+		return createdBall;
 	}
 }

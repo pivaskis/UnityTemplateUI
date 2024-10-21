@@ -16,6 +16,30 @@ public class ButtonMobile : MonoBehaviour
 	private Vector3 _normalScale;
 	private bool CanNotExecute => !isActiveAndEnabled || !IsInteractable;
 
+	public Button.ButtonClickedEvent MouseDown
+	{
+		get => m_OnMouseDown;
+		set => m_OnMouseDown = value;
+	}
+
+	public Button.ButtonClickedEvent MouseEnter
+	{
+		get => m_OnMouseEnter;
+		set => m_OnMouseEnter = value;
+	}
+
+	public Button.ButtonClickedEvent MouseExit
+	{
+		get => m_OnMouseExit;
+		set => m_OnMouseExit = value;
+	}
+
+	public Button.ButtonClickedEvent MouseUpAsButton
+	{
+		get => m_OnMouseUpAsButton;
+		set => m_OnMouseUpAsButton = value;
+	}
+
 	private void Awake()
 	{
 		_normalScale = transform.localScale;
@@ -38,7 +62,7 @@ public class ButtonMobile : MonoBehaviour
 		if (CanNotExecute)
 			return;
 
-		m_OnMouseDown?.Invoke();
+		MouseDown?.Invoke();
 		transform.localScale *= scaleMultiplier;
 		_audioSource.Play();
 	}
@@ -48,7 +72,7 @@ public class ButtonMobile : MonoBehaviour
 		if (CanNotExecute)
 			return;
 
-		m_OnMouseEnter?.Invoke();
+		MouseEnter?.Invoke();
 	}
 
 	private void OnMouseExit()
@@ -56,7 +80,7 @@ public class ButtonMobile : MonoBehaviour
 		if (CanNotExecute)
 			return;
 
-		m_OnMouseExit?.Invoke();
+		MouseExit?.Invoke();
 		transform.localScale = _normalScale;
 	}
 
@@ -65,7 +89,7 @@ public class ButtonMobile : MonoBehaviour
 		if (CanNotExecute)
 			return;
 
-		m_OnMouseUpAsButton?.Invoke();
+		MouseUpAsButton?.Invoke();
 		transform.localScale = _normalScale;
 	}
 }

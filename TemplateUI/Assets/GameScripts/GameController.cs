@@ -2,13 +2,11 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
 	public BallSpawner ballSpawner;
+	public Canon canon;
 	public TextMeshPro counterText;
 	public LevelsConfig LevelsConfig;
 
@@ -21,39 +19,45 @@ public class GameController : MonoBehaviour
 	public TextMeshProUGUI LevelTxt;
 	public TextMeshProUGUI NeedFuelTxt;
 
-	public Image shipImage;
+	public GameObject levelsContainer;
 
 	public event Action<bool, int> LevelComplete;
 
 	private int _counter = 0;
 	private int winnableScore;
 	private int GameCoins;
-	private IEnumerator spawnerCoroutine;
 	private int currentLevelNumber;
 
 	public Animation boxesAnimation;
-	public Animation BallSpawnerAnimation;
+	private GameObject levelPrefab;
+	private GameObject currentLevelPrefab;
+	private GameObject createdBall;
 
-	private IEnumerator BallSpawnerCoroutine()
+	[ContextMenu("CreateBall")]
+	private void CreateBall()
 	{
-		yield return new WaitForSeconds(1);
+		if (createdBall != null) 
+			Destroy(createdBall);
 
-		while (ballsCount != 0)
+		createdBall = ballSpawner.CreateBall();
+		
+		canon.SetPushingBall(createdBall);
+		createdBallsCount++;
+		ballsCount--;
+	}
+
+	public void NextLevelLoad()
+	{
+		LoadLevel(currentLevelNumber + 1);
+		if (boxController != null)
 		{
-			ballSpawner.CreateBall();
-			yield return new WaitForSeconds(Random.Range(1, 3));
-			createdBallsCount++;
-			ballsCount--;
+			boxController.MultiplayerCounter += MultiplayCounter;
 		}
 	}
 
-	public void NextLevelLoad() =>
-		LoadLevel(currentLevelNumber + 1);
-
 	public void LoadLevel(int levelNumber)
 	{
-		shipImage.sprite = PlayerController.playerController.Ship.Skin;
-		boxController.MultiplayerCounter += MultiplayCounter;
+		ballsCount = PlayerController.instance.ballsCount;
 
 		SetLevelConfig(levelNumber);
 		_counter = 0;
@@ -62,8 +66,16 @@ public class GameController : MonoBehaviour
 		LevelTxt.text = "Level " + levelNumber;
 		NeedFuelTxt.text = "Required fuel " + winnableScore;
 
-		spawnerCoroutine = BallSpawnerCoroutine();
-		StartCoroutine(spawnerCoroutine);
+		if (currentLevelPrefab!=null) 
+			Destroy(currentLevelPrefab);
+
+		currentLevelPrefab = Instantiate(levelPrefab, levelsContainer.transform);
+		currentLevelPrefab.transform.localPosition = Vector3.zero;
+		boxController = currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>();
+		boxController.MultiplayerCounter += MultiplayCounter;
+
+		CreateBall();
+
 		EnableAnimation(true);
 	}
 
@@ -84,6 +96,10 @@ public class GameController : MonoBehaviour
 		{
 			TryAgain();
 		}
+		else
+		{
+			CreateBall();
+		}
 	}
 
 	private void TryAgain()
@@ -96,23 +112,18 @@ public class GameController : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			boxesAnimation.Play();
-			BallSpawnerAnimation.Play();
 		}
 		else
 		{
-			boxesAnimation.Stop();
-			BallSpawnerAnimation.Stop();
 		}
 	}
 
 	private void YouWin()
 	{
-		StopCoroutine(spawnerCoroutine);
 		int nextLevelNumber = currentLevelNumber + 1;
 		PlayerPrefs.SetInt("level " + nextLevelNumber, 1);
 		LevelComplete?.Invoke(true, GameCoins);
-		PlayerController.playerController.GameCoins += GameCoins;
+		PlayerController.instance.GameCoins += GameCoins;
 		EnableAnimation(false);
 	}
 
@@ -120,8 +131,8 @@ public class GameController : MonoBehaviour
 	{
 		LevelConfig config = LevelsConfig.Levels[levelNumber - 1];
 		currentLevelNumber = config.levelNumber;
-		ballsCount = config.ballsCount;
 		winnableScore = config.winnableScore;
 		GameCoins = config.LevelScore;
+		levelPrefab = config.levelPrefab;
 	}
 }

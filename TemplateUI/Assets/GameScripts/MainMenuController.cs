@@ -8,14 +8,14 @@ public class MainMenuController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		if (PlayerController.playerController == null)
+		if (PlayerController.instance == null)
 			return;
 
-		GameCoins.text = PlayerController.playerController.GameCoins.ToString();
+		GameCoins.text = PlayerController.instance.GameCoins.ToString();
 	}
 
 	private void Start()
 	{
-		GameCoins.text = PlayerController.playerController.GameCoins.ToString();
+		GameCoins.text = PlayerController.instance.GameCoins.ToString();
 	}
 }

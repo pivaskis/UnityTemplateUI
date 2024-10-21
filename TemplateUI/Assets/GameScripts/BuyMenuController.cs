@@ -17,11 +17,11 @@ public class BuyMenuController : MonoBehaviour
         BuyButton.onClick.AddListener(OnBuyButtonClicked);
     }
 
-    public void SetShipData(Ship ship)
+    public void SetShipData(Ball ball)
     {
-        ShipName = ship.ShipName;
-        IconImg.sprite = ship.Icon;
-        PriceTxt.text = ship.Price.ToString();
+        ShipName = ball.BallName;
+        IconImg.sprite = ball.Icon;
+        PriceTxt.text = ball.Price.ToString();
     } 
 
     private void OnEnable()

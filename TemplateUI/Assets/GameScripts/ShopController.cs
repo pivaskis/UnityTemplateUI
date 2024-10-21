@@ -21,22 +21,22 @@ public class ShopController : MonoBehaviour
 		ReadeBoughtShipsFromPlayerPrefs();
 
 		ShipIconsByName = new Dictionary<int, ShopShipIcon>();
-		foreach (Ship shipItem in shipsConfig.Ships)
+		foreach (Ball shipItem in shipsConfig.Ships)
 		{
 			GameObject instantiatedShip = GameObject.Instantiate(ShipIconTemplate, grid.transform);
 			ShopShipIcon shipIcon = instantiatedShip.GetComponent<ShopShipIcon>();
 
 			shipIcon.OnShipIconSelected += OnShipIconSelected;
 
-			shipIcon.ShipName = shipItem.ShipName;
+			shipIcon.ShipName = shipItem.BallName;
 			shipIcon.icon.sprite = shipItem.Icon;
 			shipIcon.price = shipItem.Price;
 
-			if (shipItem.ShipName == PlayerController.playerController.Ship.ShipName)
+			if (shipItem.BallName == PlayerController.instance.ball.BallName)
 			{
 				shipIcon.priceTxt.text = "Current";
 			}
-			else if (boughtShips.Contains(shipItem.ShipName))
+			else if (boughtShips.Contains(shipItem.BallName))
 			{
 				shipIcon.priceTxt.text = "bought";
 			}
@@ -57,18 +57,18 @@ public class ShopController : MonoBehaviour
 
 	private void OnShipIconSelected(int shipName)
 	{
-		if (shipName == PlayerController.playerController.Ship.ShipName)
+		if (shipName == PlayerController.instance.ball.BallName)
 			return;
 
 		if (boughtShips.Contains(shipName))
 		{
-			PlayerController.playerController.SetShip(shipsConfig.Ships[shipName]);
-			ShipIconsByName[PlayerController.playerController.Ship.ShipName].priceTxt.text = "bought";
+			PlayerController.instance.SetBall(shipsConfig.Ships[shipName]);
+			ShipIconsByName[PlayerController.instance.ball.BallName].priceTxt.text = "bought";
 			ShipIconsByName[shipName].priceTxt.text = "Current";
 		}
 		else
 		{
-			if (shipsConfig.Ships[shipName].Price > PlayerController.playerController.GameCoins)
+			if (shipsConfig.Ships[shipName].Price > PlayerController.instance.GameCoins)
 			{
 				OpenYouGotNoMoney();
 			}
@@ -91,9 +91,9 @@ public class ShopController : MonoBehaviour
 		YouGotNoMoneyMenu.SetActive(false);
 	}
 
-	private void OpenBuyMenu(Ship ship)
+	private void OpenBuyMenu(Ball ball)
 	{
-		BuyMenuController.SetShipData(ship);
+		BuyMenuController.SetShipData(ball);
 		BuyMenuController.OnBought += OnShipBought;
 		BuyMenu.SetActive(true);
 	}
@@ -101,10 +101,10 @@ public class ShopController : MonoBehaviour
 	private void OnShipBought(int shipName)
 	{
 		boughtShips.Add(shipName);
-		ShipIconsByName[PlayerController.playerController.Ship.ShipName].priceTxt.text = "bought";
+		ShipIconsByName[PlayerController.instance.ball.BallName].priceTxt.text = "bought";
 		ShipIconsByName[shipName].priceTxt.text = "Current";
-		PlayerController.playerController.SetShip(shipsConfig.Ships[shipName]);
-		PlayerController.playerController.GameCoins -= shipsConfig.Ships[shipName].Price;
+		PlayerController.instance.SetBall(shipsConfig.Ships[shipName]);
+		PlayerController.instance.GameCoins -= shipsConfig.Ships[shipName].Price;
 		CloseBuyMenu();
 	}
 

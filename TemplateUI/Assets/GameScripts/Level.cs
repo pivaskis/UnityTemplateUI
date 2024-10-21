@@ -14,8 +14,6 @@ public class Level : MonoBehaviour
 	{
 		if (levelNumber == 1 || (PlayerPrefs.HasKey("level " + levelNumber) && PlayerPrefs.GetInt("level " + levelNumber) == 1))
 		{
-			LevelTxt.gameObject.SetActive(true);
-			LevelTxt.text = levelNumber.ToString();
 			Locker.SetActive(false);
 		}
 		else
@@ -24,8 +22,7 @@ public class Level : MonoBehaviour
 		}
 	}
 
-	public void SelectLevel()
-	{
-		OnLevelSelected?.Invoke(levelNumber);
-	}
+	private void Start() => LevelTxt.text = levelNumber.ToString();
+
+	public void SelectLevel() => OnLevelSelected?.Invoke(levelNumber);
 }

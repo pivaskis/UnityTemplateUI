@@ -62,7 +62,6 @@ public class SceneManager : MonoBehaviour
 		ShopButton.interactable = false;
 		yield return new WaitForSeconds(1);
 		MainMenu.SetActive(false);
-		levelsController.SetInteractable(true);
 		ShopMenu.SetActive(true);
 	}
 
@@ -116,7 +115,6 @@ public class SceneManager : MonoBehaviour
 		OptionButton.interactable = false;
 		yield return new WaitForSeconds(1);
 		MainMenu.SetActive(false);
-		levelsController.SetInteractable(true);
 		LevelsMenu.SetActive(true);
 	}
 
@@ -128,7 +126,6 @@ public class SceneManager : MonoBehaviour
 
 	private IEnumerator OpenGameSceneCoroutine(int levelNumber)
 	{
-		levelsController.SetInteractable(false);
 		yield return new WaitForSeconds(1);
 		LevelsMenu.SetActive(false);
 		GameScene.SetActive(true);

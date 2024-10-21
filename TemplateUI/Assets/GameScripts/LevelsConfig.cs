@@ -12,7 +12,7 @@ public class LevelsConfig : ScriptableObject
 public class LevelConfig
 {
     public int levelNumber;
-    public int ballsCount;
     public int winnableScore;
     public int LevelScore=10;
+    public GameObject levelPrefab;
 }

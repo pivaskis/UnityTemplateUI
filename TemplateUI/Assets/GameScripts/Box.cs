@@ -19,7 +19,7 @@ public class Box : MonoBehaviour
 
 	private IEnumerator RandomizeMultipler()
 	{
-		while (isActiveAndEnabled)
+	//	while (isActiveAndEnabled)
 		{
 			Multipler = Random.Range(9, 41);
 			MultiplayerText.text = $"X{Multipler}";
