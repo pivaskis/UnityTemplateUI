@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -57,6 +56,7 @@ public class SceneManager : MonoBehaviour
 
 	private IEnumerator OpenShopSceneCoroutine()
 	{
+		
 		PlayButton.interactable = false;
 		OptionButton.interactable = false;
 		ShopButton.interactable = false;

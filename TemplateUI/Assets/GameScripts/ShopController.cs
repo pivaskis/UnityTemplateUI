@@ -68,7 +68,7 @@ public class ShopController : MonoBehaviour
 		}
 		else
 		{
-			if (shipsConfig.Ships[shipName].Price > PlayerController.instance.GameCoins)
+			if (shipsConfig.Ships[shipName].Price > PlayerController.instance.CoinsCount)
 			{
 				OpenYouGotNoMoney();
 			}
@@ -104,14 +104,12 @@ public class ShopController : MonoBehaviour
 		ShipIconsByName[PlayerController.instance.ball.BallName].priceTxt.text = "bought";
 		ShipIconsByName[shipName].priceTxt.text = "Current";
 		PlayerController.instance.SetBall(shipsConfig.Ships[shipName]);
-		PlayerController.instance.GameCoins -= shipsConfig.Ships[shipName].Price;
+		PlayerController.instance.ChangeCoinsCount(-shipsConfig.Ships[shipName].Price);
 		CloseBuyMenu();
 	}
 
-	public void CloseBuyMenu()
-	{
+	public void CloseBuyMenu() => 
 		BuyMenu.SetActive(false);
-	}
 
 	private void ReadeBoughtShipsFromPlayerPrefs()
 	{

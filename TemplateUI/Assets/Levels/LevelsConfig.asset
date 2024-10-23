@@ -41,3 +41,71 @@ MonoBehaviour:
     winnableScore: 110
     LevelScore: 20
     levelPrefab: {fileID: 5698660926481635146, guid: d37fc0b9d3b57bb41a7004b63d09a8fc, type: 3}
+  - levelNumber: 8
+    winnableScore: 120
+    LevelScore: 30
+    levelPrefab: {fileID: 5991961223197875770, guid: 688557e28bf2a8649a8434ecc7e919fb, type: 3}
+  - levelNumber: 9
+    winnableScore: 120
+    LevelScore: 30
+    levelPrefab: {fileID: 2427409507327840791, guid: ad99fa8496cb2e14192f08da45c9cde3, type: 3}
+  - levelNumber: 10
+    winnableScore: 120
+    LevelScore: 30
+    levelPrefab: {fileID: 5698660926481635146, guid: ff20dc0c1cc65c24da6a24ac8f0b0e46, type: 3}
+  - levelNumber: 11
+    winnableScore: 120
+    LevelScore: 30
+    levelPrefab: {fileID: 5698660926481635146, guid: 48be2846d48d6f14fa6a77309855c331, type: 3}
+  - levelNumber: 12
+    winnableScore: 120
+    LevelScore: 30
+    levelPrefab: {fileID: 5991961223197875770, guid: e582244758eddb74590234e85e15ab3c, type: 3}
+  - levelNumber: 13
+    winnableScore: 120
+    LevelScore: 40
+    levelPrefab: {fileID: 2427409507327840791, guid: e908c7619db6db849a0637f54ea68f8d, type: 3}
+  - levelNumber: 14
+    winnableScore: 120
+    LevelScore: 40
+    levelPrefab: {fileID: 5698660926481635146, guid: 89e98cff81b37b1498ebe4bfda21e506, type: 3}
+  - levelNumber: 15
+    winnableScore: 120
+    LevelScore: 40
+    levelPrefab: {fileID: 5698660926481635146, guid: b132db8925900854e824ca64bd915901, type: 3}
+  - levelNumber: 16
+    winnableScore: 120
+    LevelScore: 50
+    levelPrefab: {fileID: 5698660926481635146, guid: 4aebcc2874fff3347a0766081f6e4ab5, type: 3}
+  - levelNumber: 17
+    winnableScore: 120
+    LevelScore: 50
+    levelPrefab: {fileID: 5698660926481635146, guid: fd8ab853bd88c554fbdb069c7e69555d, type: 3}
+  - levelNumber: 18
+    winnableScore: 130
+    LevelScore: 50
+    levelPrefab: {fileID: 5698660926481635146, guid: a22fd868d493b6549a07337e34a10a11, type: 3}
+  - levelNumber: 19
+    winnableScore: 130
+    LevelScore: 50
+    levelPrefab: {fileID: 5991961223197875770, guid: b2814c2118ec06c419b1bd3add81aa3f, type: 3}
+  - levelNumber: 20
+    winnableScore: 130
+    LevelScore: 50
+    levelPrefab: {fileID: 2427409507327840791, guid: 45a166e20b2e1354d843022e97bdbbfa, type: 3}
+  - levelNumber: 21
+    winnableScore: 130
+    LevelScore: 50
+    levelPrefab: {fileID: 5698660926481635146, guid: 555d78b9338daa0429ee5f8e6baf52ea, type: 3}
+  - levelNumber: 22
+    winnableScore: 130
+    LevelScore: 50
+    levelPrefab: {fileID: 5698660926481635146, guid: 0bc0b1c2ca9623d4fb09f1a89a9ff3b7, type: 3}
+  - levelNumber: 23
+    winnableScore: 130
+    LevelScore: 60
+    levelPrefab: {fileID: 5991961223197875770, guid: 711daa0c7f25527448e163ebd77d2c87, type: 3}
+  - levelNumber: 24
+    winnableScore: 160
+    LevelScore: 100
+    levelPrefab: {fileID: 5698660926481635146, guid: c982a73de2972b84b8496fca86426e84, type: 3}

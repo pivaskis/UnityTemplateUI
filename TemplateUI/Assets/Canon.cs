@@ -33,8 +33,10 @@ public class Canon : MonoBehaviour
 		_sliderDivisionPrice = (_maxForceAmount - _defaultForceAmount) / slider.maxValue;
 	}
 
-	private void OnDisable() => 
-		Destroy(_pushingBallRigidbody.gameObject);
+	private void OnDisable()
+	{
+		if (_pushingBallRigidbody != null) Destroy(_pushingBallRigidbody.gameObject);
+	}
 
 	public void SetPushingBall(GameObject ball)
 	{

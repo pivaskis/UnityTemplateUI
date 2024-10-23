@@ -25,13 +25,13 @@ public class GameController : MonoBehaviour
 
 	public event Action<bool, int> LevelComplete;
 
-	private int _counter = 0;
+	private int _scoreCounter = 0;
 	private int winnableScore;
 	private int GameCoins;
 	private int currentLevelNumber;
 
 	private GameObject levelPrefab;
-	private GameObject currentLevelPrefab;
+	private GameObject currentLevelGameObject;
 	private GameObject createdBall;
 
 	[ContextMenu("CreateBall")]
@@ -63,23 +63,46 @@ public class GameController : MonoBehaviour
 		ballsCount = PlayerController.instance.ballsCount;
 
 		SetLevelConfig(levelNumber);
-		_counter = 0;
-		counterText.text = _counter.ToString();
+		_scoreCounter = 0;
+		counterText.text = _scoreCounter.ToString();
 
 		LevelTxt.text = "Level " + levelNumber;
 		NeedFuelTxt.text = "Required fuel " + winnableScore;
 
-		if (currentLevelPrefab != null)
+		if (currentLevelGameObject != null)
 		{
-			currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter -= MultiplayCounter;
-			Destroy(currentLevelPrefab);
+			currentLevelGameObject.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter -= MultiplayCounter;
+			Destroy(currentLevelGameObject);
 		}
 
-		currentLevelPrefab = Instantiate(levelPrefab, levelsContainer.transform);
-		currentLevelPrefab.transform.localPosition = Vector3.zero;
-		currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter += MultiplayCounter;
+		currentLevelGameObject = Instantiate(levelPrefab, levelsContainer.transform);
+		currentLevelGameObject.transform.localPosition = Vector3.zero;
+		currentLevelGameObject.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter += MultiplayCounter;
+
+		BonusController[] bonuses = currentLevelGameObject.GetComponentsInChildren<BonusController>();
+		
+		foreach (BonusController bonusController in bonuses) 
+			bonusController.OnBonusReceived += BonusReceived;
 
 		CreateBall();
+	}
+
+	private void BonusReceived(Bonus bonus)
+	{
+		switch (bonus)
+		{
+			case Bonus.Ball:
+				ballsCount++;
+				break;
+			case Bonus.Coins:
+				PlayerController.instance.ChangeCoinsCount(5);
+				break;
+			case Bonus.Score:
+				_scoreCounter *= 2;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException(nameof(bonus), bonus, null);
+		}
 	}
 
 	public void ReloadLevel() =>
@@ -94,9 +117,9 @@ public class GameController : MonoBehaviour
 	private void MultiplayCounter(int multiplayer)
 	{
 		createdBallsCount--;
-		_counter += multiplayer;
-		counterText.text = _counter.ToString();
-		if (_counter >= winnableScore)
+		_scoreCounter += multiplayer;
+		counterText.text = _scoreCounter.ToString();
+		if (_scoreCounter >= winnableScore)
 		{
 			YouWin();
 		}
@@ -118,7 +141,7 @@ public class GameController : MonoBehaviour
 		int nextLevelNumber = currentLevelNumber + 1;
 		PlayerPrefs.SetInt("level " + nextLevelNumber, 1);
 		LevelComplete?.Invoke(true, GameCoins);
-		PlayerController.instance.GameCoins += GameCoins;
+		PlayerController.instance.ChangeCoinsCount(GameCoins);
 	}
 
 	private void SetLevelConfig(int levelNumber)

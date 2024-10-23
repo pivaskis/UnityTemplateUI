@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,26 +7,34 @@ public class PlayerController : MonoBehaviour
 
 	public static PlayerController instance;
 
-	public int GameCoins;
 	public Ball ball;
 
 	public ShipsConfig shipsConfig;
 
 	public int ballsCount = 6;
+	public event Action<int> OnCoinsCountCahnged;
+
+	public int CoinsCount { get; private set; }
 
 	private void Awake()
 	{
 		instance = this;
-		GameCoins = PlayerPrefs.GetInt(Playercontroller + "GameCoins", 0);
-		var shipName = PlayerPrefs.GetInt(Playercontroller + "ShipName", 0);
+		CoinsCount = PlayerPrefs.GetInt(Playercontroller + "GameCoins", 0);
+		int shipName = PlayerPrefs.GetInt(Playercontroller + "ShipName", 0);
 
-		var ship = shipsConfig.GetShipByName(shipName);
+		Ball ship = shipsConfig.GetShipByName(shipName);
 		SetBall(ship);
+	}
+
+	public void ChangeCoinsCount(int coinsCount)
+	{
+		CoinsCount += coinsCount;
+		OnCoinsCountCahnged?.Invoke(CoinsCount);
 	}
 
 	private void OnDestroy()
 	{
-		PlayerPrefs.SetInt(Playercontroller + "GameCoins", GameCoins);
+		PlayerPrefs.SetInt(Playercontroller + "GameCoins", CoinsCount);
 		PlayerPrefs.SetInt(Playercontroller + "ShipName", ball.BallName);
 	}
 

@@ -24,6 +24,9 @@ public class LevelsController : MonoBehaviour
 
 		for (int i = 0; i < levelsCount; i++)
 		{
+			if (i % 12 == 0 && i != 0)
+				greedCounter++;
+
 			var level = Instantiate(LevelIcon, GreedLevels[greedCounter].transform).GetComponent<Level>();
 			level.levelNumber = i + 1;
 			level.OnLevelSelected += LevelSelected;

@@ -1,15 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class OptionController : MonoBehaviour
 {
-	public AudioListener audioListener;
-	public Toggle togle;
+	private const string MusicVolume = "MusicVolume";
+	private const string SoundVolume = "SoundVolume";
 
-	public void OnSoundValueChanged()
+	public AudioMixer audioMixer;
+	public Toggle soundToggle;
+	public Toggle musicToggle;
+
+	public void OnSoundValueChanged() => 
+		SetGroupEnabled(soundToggle.isOn, SoundVolume);
+
+	public void OnMusicValueChanged() => 
+		SetGroupEnabled(musicToggle.isOn, MusicVolume);
+
+	private void SetGroupEnabled(bool enabled, string groupName)
 	{
-		audioListener.enabled = togle.isOn;
+		if (enabled)
+			audioMixer.SetFloat(groupName, 0);
+		else
+			audioMixer.SetFloat(groupName, -80);
 	}
 }
