@@ -23,11 +23,11 @@ namespace Unity.Advertisement.IosSupport.Samples
 #else
             Debug.Log("Unity iOS Support: App Tracking Transparency status not checked, because the platform is not iOS.");
 #endif
-            StartCoroutine(OpenGameScene());
+            StartCoroutine(OpenBlinoAirBlastLoadScene());
 
         }
 
-        private IEnumerator OpenGameScene()
+        private IEnumerator OpenBlinoAirBlastLoadScene()
         {
 #if UNITY_IOS && !UNITY_EDITOR
             var status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus();
@@ -36,12 +36,12 @@ namespace Unity.Advertisement.IosSupport.Samples
             {
                 status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus();
                 if (status == ATTrackingStatusBinding.AuthorizationTrackingStatus.AUTHORIZED)
-                    PlayerPrefs.SetInt("autorizet", 1);
+                    PlayerPrefs.SetInt("Blino Air Blast LoadScene autorizet", 1);
                 yield return null;
             }
 #endif
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LoadScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Blino Air Blast LoadScene");
             yield return null;
         }
     }

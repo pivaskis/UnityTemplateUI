@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AppsFlyerSDK;
@@ -7,7 +6,7 @@ using AppsFlyerSDK;
 
 public class AppsFlyerObjectScript : MonoBehaviour, IAppsFlyerConversionData
 {
-    private const string SomeLoaderKey = "SomeLoaderKey";
+    private const string SomeLoaderKey = "BlinoAirBlastSomeLoaderKey";
 
     // These fields are set from the editor so do not modify!
     //******************************//

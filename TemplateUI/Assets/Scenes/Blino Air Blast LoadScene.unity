@@ -487,11 +487,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
       propertyPath: appID
-      value: 6737116961
+      value: 6737283153
       objectReference: {fileID: 0}
     - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
       propertyPath: devKey
-      value: 3y2zBiTRKWfW4DcubasycT
+      value: JbBV87S7yJoLebrfFEFKek
       objectReference: {fileID: 0}
     - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
       propertyPath: getConversionData
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LogoCanvas: {fileID: 1357397404}
-  SomeOfferLink:
+  BlinoAirBlastSomeOfferLink:
   - h
   - t
   - t
@@ -910,26 +910,27 @@ MonoBehaviour:
   - ':'
   - /
   - /
-  - u
-  - f
-  - l
+  - b
   - i
-  - f
-  - l
-  - i
-  - n
-  - d
-  - e
-  - r
-  - d
-  - e
   - g
-  - e
-  - f
-  - l
+  - b
   - i
-  - e
+  - d
+  - a
+  - i
+  - a
+  - i
+  - b
+  - a
+  - l
   - s
+  - b
+  - i
+  - r
+  - e
+  - t
+  - r
+  - e
   - .
   - h
   - o
@@ -937,13 +938,15 @@ MonoBehaviour:
   - e
   - s
   - /
+  - b
+  - i
+  - a
+  - i
   - f
-  - l
-  - d
-  - e
-  - g
+  - n
   - u
-  - k
+  - s
+  - j
 --- !u!1 &1159405997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.0106256}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -362}
+  m_AnchoredPosition: {x: 0, y: -362}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2000628065
