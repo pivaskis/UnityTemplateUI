@@ -24,7 +24,7 @@ MonoBehaviour:
   - levelNumber: 3
     winnableScore: 90
     LevelScore: 10
-    levelPrefab: {fileID: 5698660926481635146, guid: c9c72de494d14834384ae4693f45b7e8, type: 3}
+    levelPrefab: {fileID: 5698660926481635146, guid: a0eb73c59b35ad440a7fa3597f640118, type: 3}
   - levelNumber: 4
     winnableScore: 100
     LevelScore: 20
@@ -33,3 +33,11 @@ MonoBehaviour:
     winnableScore: 110
     LevelScore: 20
     levelPrefab: {fileID: 5698660926481635146, guid: 64c6cdab91a5b92459ce1551e173a877, type: 3}
+  - levelNumber: 6
+    winnableScore: 110
+    LevelScore: 20
+    levelPrefab: {fileID: 5698660926481635146, guid: 92e79ede977408842aa7b68bac959c4d, type: 3}
+  - levelNumber: 7
+    winnableScore: 110
+    LevelScore: 20
+    levelPrefab: {fileID: 5698660926481635146, guid: d37fc0b9d3b57bb41a7004b63d09a8fc, type: 3}

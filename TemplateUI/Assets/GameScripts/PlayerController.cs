@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class PlayerController : MonoBehaviour
 	public static PlayerController instance;
 
 	public int GameCoins;
-	[FormerlySerializedAs("Ship")] public Ball ball;
+	public Ball ball;
 
 	public ShipsConfig shipsConfig;
 
@@ -36,5 +35,6 @@ public class PlayerController : MonoBehaviour
 		this.ball.Icon = ball.Icon;
 		this.ball.Skin = ball.Skin;
 		this.ball.Price = ball.Price;
+		this.ball.physicsMaterial = ball.physicsMaterial;
 	}
 }

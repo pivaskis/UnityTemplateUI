@@ -10,19 +10,21 @@ public class Level : MonoBehaviour
 	public GameObject Locker;
 	public event Action<int> OnLevelSelected;
 
-	private void OnEnable()
+	private void Start() => LevelTxt.text = levelNumber.ToString();
+
+	public void ConfigureIconLevel()
 	{
+		LevelTxt.text = levelNumber.ToString();
 		if (levelNumber == 1 || (PlayerPrefs.HasKey("level " + levelNumber) && PlayerPrefs.GetInt("level " + levelNumber) == 1))
 		{
 			Locker.SetActive(false);
+			transform.GetComponent<Button>().interactable = true;
 		}
 		else
 		{
 			transform.GetComponent<Button>().interactable = false;
 		}
 	}
-
-	private void Start() => LevelTxt.text = levelNumber.ToString();
 
 	public void SelectLevel() => OnLevelSelected?.Invoke(levelNumber);
 }

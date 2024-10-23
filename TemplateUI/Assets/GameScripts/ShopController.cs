@@ -23,7 +23,7 @@ public class ShopController : MonoBehaviour
 		ShipIconsByName = new Dictionary<int, ShopShipIcon>();
 		foreach (Ball shipItem in shipsConfig.Ships)
 		{
-			GameObject instantiatedShip = GameObject.Instantiate(ShipIconTemplate, grid.transform);
+			GameObject instantiatedShip = Instantiate(ShipIconTemplate, grid.transform);
 			ShopShipIcon shipIcon = instantiatedShip.GetComponent<ShopShipIcon>();
 
 			shipIcon.OnShipIconSelected += OnShipIconSelected;

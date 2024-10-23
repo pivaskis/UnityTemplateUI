@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -21,6 +20,9 @@ public class GameController : MonoBehaviour
 
 	public GameObject levelsContainer;
 
+	public SpriteRenderer CurrentBallSkin;
+	public TextMeshPro txtBallsAmount;
+
 	public event Action<bool, int> LevelComplete;
 
 	private int _counter = 0;
@@ -28,7 +30,6 @@ public class GameController : MonoBehaviour
 	private int GameCoins;
 	private int currentLevelNumber;
 
-	public Animation boxesAnimation;
 	private GameObject levelPrefab;
 	private GameObject currentLevelPrefab;
 	private GameObject createdBall;
@@ -36,14 +37,16 @@ public class GameController : MonoBehaviour
 	[ContextMenu("CreateBall")]
 	private void CreateBall()
 	{
-		if (createdBall != null) 
+		if (createdBall != null)
 			Destroy(createdBall);
 
 		createdBall = ballSpawner.CreateBall();
-		
+
 		canon.SetPushingBall(createdBall);
 		createdBallsCount++;
 		ballsCount--;
+
+		UpdateBallSkinAndCount();
 	}
 
 	public void NextLevelLoad()
@@ -66,21 +69,27 @@ public class GameController : MonoBehaviour
 		LevelTxt.text = "Level " + levelNumber;
 		NeedFuelTxt.text = "Required fuel " + winnableScore;
 
-		if (currentLevelPrefab!=null) 
+		if (currentLevelPrefab != null)
+		{
+			currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter -= MultiplayCounter;
 			Destroy(currentLevelPrefab);
+		}
 
 		currentLevelPrefab = Instantiate(levelPrefab, levelsContainer.transform);
 		currentLevelPrefab.transform.localPosition = Vector3.zero;
-		boxController = currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>();
-		boxController.MultiplayerCounter += MultiplayCounter;
+		currentLevelPrefab.transform.GetChild(0).GetComponent<BoxContainerController>().MultiplayerCounter += MultiplayCounter;
 
 		CreateBall();
-
-		EnableAnimation(true);
 	}
 
 	public void ReloadLevel() =>
 		LoadLevel(currentLevelNumber);
+
+	private void UpdateBallSkinAndCount()
+	{
+		CurrentBallSkin.sprite = PlayerController.instance.ball.Skin;
+		txtBallsAmount.text = ballsCount.ToString();
+	}
 
 	private void MultiplayCounter(int multiplayer)
 	{
@@ -90,7 +99,6 @@ public class GameController : MonoBehaviour
 		if (_counter >= winnableScore)
 		{
 			YouWin();
-			boxController.MultiplayerCounter -= MultiplayCounter;
 		}
 		else if (ballsCount == 0 && createdBallsCount == 0)
 		{
@@ -102,21 +110,8 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	private void TryAgain()
-	{
-		EnableAnimation(false);
+	private void TryAgain() =>
 		LevelComplete?.Invoke(false, 0);
-	}
-
-	private void EnableAnimation(bool isEnabled)
-	{
-		if (isEnabled)
-		{
-		}
-		else
-		{
-		}
-	}
 
 	private void YouWin()
 	{
@@ -124,7 +119,6 @@ public class GameController : MonoBehaviour
 		PlayerPrefs.SetInt("level " + nextLevelNumber, 1);
 		LevelComplete?.Invoke(true, GameCoins);
 		PlayerController.instance.GameCoins += GameCoins;
-		EnableAnimation(false);
 	}
 
 	private void SetLevelConfig(int levelNumber)

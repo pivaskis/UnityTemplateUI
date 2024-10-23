@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +32,9 @@ public class Canon : MonoBehaviour
 
 		_sliderDivisionPrice = (_maxForceAmount - _defaultForceAmount) / slider.maxValue;
 	}
+
+	private void OnDisable() => 
+		Destroy(_pushingBallRigidbody.gameObject);
 
 	public void SetPushingBall(GameObject ball)
 	{

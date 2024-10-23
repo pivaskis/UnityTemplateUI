@@ -13,6 +13,7 @@ public class LevelsController : MonoBehaviour
 	public GameObject LevelIcon;
 
 	[SerializeField] private LevelsConfig _levelsConfig;
+	private List<Level> _levels = new();
 	private List<Button> levelsButtons = new();
 
 	private void Awake()
@@ -27,13 +28,14 @@ public class LevelsController : MonoBehaviour
 			level.levelNumber = i + 1;
 			level.OnLevelSelected += LevelSelected;
 
+			_levels.Add(level);
 			levelsButtons.Add(level.GetComponent<Button>());
 		}
 	}
 
 	private void OnEnable()
 	{
-		SetInteractable(true);
+		foreach (Level level in _levels) level.ConfigureIconLevel();
 	}
 
 	private void SetInteractable(bool isInteractable)

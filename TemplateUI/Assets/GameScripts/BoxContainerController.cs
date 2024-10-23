@@ -11,6 +11,8 @@ public class BoxContainerController : MonoBehaviour
 
 	private void OnEnable()
 	{
+		if (Boxes != null) return;
+		
 		Boxes = new List<Box>();
 
 		foreach (Transform boxTransform in transform)
