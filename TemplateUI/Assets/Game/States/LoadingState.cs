@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Api;
 using Service.StateMachine.Api;
 using Service.StateMachine.Api.States;
 

@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Api;
 
 namespace Game.States
 {

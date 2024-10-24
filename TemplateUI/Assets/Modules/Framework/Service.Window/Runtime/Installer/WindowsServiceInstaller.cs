@@ -1,10 +1,11 @@
-﻿using Modules.Framework.Service.WindowService.Runtime.Internal;
-using Service.WindowService.Runtime.Api;
+﻿using Service.Window.Runtime.Data;
+using Service.Window.Runtime.Behaviours;
+using Service.Window.Runtime.Internal;
 using Tools.VContainer;
 using UnityEngine;
 using VContainer;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Installer
+namespace Service.Window.Runtime.Installer
 {
 	[CreateAssetMenu(fileName = "WindowsServiceInstaller", menuName = "Modules/Installers/WindowsServiceInstaller")]
 	public class WindowsServiceInstaller : ScriptableInstaller
@@ -14,8 +15,8 @@ namespace Modules.Framework.Service.WindowService.Runtime.Installer
 
 		public override void InternalInstall(IContainerBuilder builder)
 		{
-			builder.Register<IWindowFactory>(Lifetime.Scoped).WithParameter(windowsData);
-			builder.Register<IWindowService>(Lifetime.Scoped).AsImplementedInterfaces();
+			builder.Register<WindowFactory>(Lifetime.Scoped).WithParameter(windowsData);
+			builder.Register<WindowService>(Lifetime.Scoped).AsImplementedInterfaces();
 		}
 	}
 }

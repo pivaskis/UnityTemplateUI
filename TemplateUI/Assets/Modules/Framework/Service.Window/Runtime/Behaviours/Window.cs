@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Service.WindowService.Runtime.Api
+namespace Service.Window.Runtime.Api
 {
 	public class Window : MonoBehaviour
 	{

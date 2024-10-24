@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace Service.WindowService.Runtime.Api
+namespace Service.Window.Runtime.Api
 {
 	[PublicAPI]
 	public interface ICommonWindow : IWindow

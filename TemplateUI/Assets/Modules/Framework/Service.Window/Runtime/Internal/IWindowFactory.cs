@@ -1,6 +1,6 @@
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Api;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Internal
+namespace Service.Window.Runtime.Internal
 {
 	public interface IWindowFactory
 	{

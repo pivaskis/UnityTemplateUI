@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace Service.WindowService.Runtime.Api
+namespace Service.Window.Runtime.Api
 {
 	public class CommonWindow : Window, ICommonWindow
 	{

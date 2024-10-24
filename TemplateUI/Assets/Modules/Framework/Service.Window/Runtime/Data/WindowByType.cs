@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Installer
+namespace Service.Window.Runtime.Data
 {
 	[Serializable]
 	internal class WindowByType

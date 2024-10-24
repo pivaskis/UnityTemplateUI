@@ -1,8 +1,9 @@
-using Modules.Framework.Service.WindowService.Runtime.Installer;
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Data;
+using Service.Window.Runtime.Api;
+using Service.Window.Runtime.Installer;
 using VContainer;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Internal
+namespace Service.Window.Runtime.Internal
 {
 	internal class WindowFactory : IWindowFactory
 	{

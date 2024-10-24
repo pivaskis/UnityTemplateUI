@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Api;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Internal
+namespace Service.Window.Runtime.Internal
 {
 	public class WindowService : IWindowService
 	{

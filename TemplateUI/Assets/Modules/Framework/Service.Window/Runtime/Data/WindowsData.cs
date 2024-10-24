@@ -1,8 +1,9 @@
 using System.Collections.Generic;
-using Service.WindowService.Runtime.Api;
+using Service.Window.Runtime.Api;
+using Service.Window.Runtime.Data;
 using UnityEngine;
 
-namespace Modules.Framework.Service.WindowService.Runtime.Installer
+namespace Service.Window.Runtime.Data
 {
 	[CreateAssetMenu(menuName = "Modules/AssetData/WindowsData", fileName = "WindowsData", order = 0)]
 	internal class WindowsData : ScriptableObject
