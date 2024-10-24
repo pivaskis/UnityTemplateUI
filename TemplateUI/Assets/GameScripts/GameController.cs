@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+	private const string RequiredScore = "Required score ";
 	public BallSpawner ballSpawner;
 	public Canon canon;
 	public TextMeshPro counterText;
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour
 		counterText.text = _scoreCounter.ToString();
 
 		LevelTxt.text = "Level " + levelNumber;
-		NeedFuelTxt.text = "Required fuel " + winnableScore;
+		NeedFuelTxt.text = RequiredScore + winnableScore;
 
 		if (currentLevelGameObject != null)
 		{

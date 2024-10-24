@@ -5176,12 +5176,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome to the space journey. During the journey, we will fulfill the
-    requirements of each level, receiving crystals for passing. Crystals can be spent
-    in the store to buy new ships for our journey. \r\nMusic and sound effects can
-    be customized to your liking in the settings menu. Choose soundtracks or mute
-    the sound to focus on passing the levels.\r\nHave a good time and good luck,
-    which is important on our journey!"
+  m_text: Welcome to the world of LI-O Air Blast! Your mission is to hit one of the
+    crates by shooting balls at them. You will get points for each hit. If you press
+    the button for a long time - the power of the shot increases. Collect crystals
+    to unlock new, even more powerful balls! The more points you get, the higher
+    your score will be. Good luck on your space journey!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a56f4d3d5ae6086499102fe75252cf15, type: 2}
   m_sharedMaterial: {fileID: 5879072784279202564, guid: a56f4d3d5ae6086499102fe75252cf15, type: 2}
@@ -5208,7 +5207,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.75
+  m_fontSize: 45.05
   m_fontSizeBase: 59.9
   m_fontWeight: 400
   m_enableAutoSizing: 1
