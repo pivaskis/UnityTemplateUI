@@ -7,22 +7,22 @@ namespace Game.States
 	{
 		public void Dispose()
 		{
-			throw new System.NotImplementedException();
+			
 		}
 
 		public UniTask Initialize()
 		{
-			throw new System.NotImplementedException();
+			return UniTask.CompletedTask;
 		}
 
 		public UniTask Show()
 		{
-			throw new System.NotImplementedException();
+			return UniTask.CompletedTask;
 		}
 
 		public UniTask Close()
 		{
-			throw new System.NotImplementedException();
+			return UniTask.CompletedTask;
 		}
 	}
 }

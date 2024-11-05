@@ -1,4 +1,5 @@
-﻿using Service.Window.Runtime.Data;
+﻿using Service.Window.Runtime.Api;
+using Service.Window.Runtime.Data;
 using Service.Window.Runtime.Behaviours;
 using Service.Window.Runtime.Internal;
 using Tools.VContainer;
@@ -15,8 +16,8 @@ namespace Service.Window.Runtime.Installer
 
 		public override void InternalInstall(IContainerBuilder builder)
 		{
-			builder.Register<WindowFactory>(Lifetime.Scoped).WithParameter(windowsData);
-			builder.Register<WindowService>(Lifetime.Scoped).AsImplementedInterfaces();
+			builder.Register<IWindowService, WindowService>(Lifetime.Scoped).AsImplementedInterfaces();
+			builder.Register<IWindowFactory, WindowFactory>(Lifetime.Scoped).WithParameter(windowsData);
 		}
 	}
 }

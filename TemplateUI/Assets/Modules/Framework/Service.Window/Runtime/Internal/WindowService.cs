@@ -8,7 +8,7 @@ namespace Service.Window.Runtime.Internal
 	public class WindowService : IWindowService
 	{
 		private readonly IWindowFactory _windowFactory;
-		private Dictionary<Type, IWindow> _windowByType;
+		private Dictionary<Type, IWindow> _windowByType = new();
 
 		public WindowService(IWindowFactory windowFactory)
 		{
@@ -35,12 +35,13 @@ namespace Service.Window.Runtime.Internal
 			_windowByType.Remove(typeWindow);
 		}
 
-		public  UniTask CloseAll()
+		public UniTask CloseAll()
 		{
 			foreach (IWindow window in _windowByType.Values)
 			{
 				window.Dispose();
 			}
+
 			return UniTask.CompletedTask;
 		}
 	}
