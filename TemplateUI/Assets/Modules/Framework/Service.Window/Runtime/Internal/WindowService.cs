@@ -23,7 +23,7 @@ namespace Service.Window.Runtime.Internal
 
 			_windowByType.Add(typeWindow, window);
 
-			window.Initialize();
+			await window.Initialize();
 			await window.Show();
 			return window;
 		}
@@ -37,10 +37,8 @@ namespace Service.Window.Runtime.Internal
 
 		public UniTask CloseAll()
 		{
-			foreach (IWindow window in _windowByType.Values)
-			{
+			foreach (IWindow window in _windowByType.Values) 
 				window.Dispose();
-			}
 
 			return UniTask.CompletedTask;
 		}

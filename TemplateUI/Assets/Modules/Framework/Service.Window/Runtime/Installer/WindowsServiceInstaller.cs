@@ -5,6 +5,7 @@ using Service.Window.Runtime.Internal;
 using Tools.VContainer;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Service.Window.Runtime.Installer
 {
@@ -18,6 +19,8 @@ namespace Service.Window.Runtime.Installer
 		{
 			builder.Register<IWindowService, WindowService>(Lifetime.Scoped).AsImplementedInterfaces();
 			builder.Register<IWindowFactory, WindowFactory>(Lifetime.Scoped).WithParameter(windowsData);
+			
+			builder.RegisterComponentInNewPrefab(rootWindowsBehaviour, Lifetime.Singleton);
 		}
 	}
 }

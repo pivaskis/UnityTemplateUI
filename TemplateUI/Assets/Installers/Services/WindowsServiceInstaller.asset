@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e949947f14c40438cf1f44d6531cc04, type: 3}
   m_Name: WindowsServiceInstaller
   m_EditorClassIdentifier: 
+  rootWindowsBehaviour: {fileID: 2808917575626184564, guid: 4fcf3c99c5301467188bba5cf371a5d6, type: 3}
   windowsData: {fileID: 11400000, guid: 7951fc70183c8134d936c4a68c5e062b, type: 2}
