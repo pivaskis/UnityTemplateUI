@@ -25,8 +25,8 @@ namespace Game.States
 		public async UniTask EnterAsync(CancellationToken cancellationToken)
 		{
 			_loggerService.Log(LOGTag, "EnterAsync");
-
 			await _windowService.Show<FaderWindow>();
+			
 		}
 
 		public async UniTask ExitAsync(CancellationToken cancellationToken)

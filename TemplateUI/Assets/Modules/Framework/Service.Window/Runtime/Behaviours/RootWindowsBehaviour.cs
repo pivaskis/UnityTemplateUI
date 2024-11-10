@@ -6,6 +6,7 @@ namespace Service.Window.Runtime.Behaviours
 {
 	internal class RootWindowsBehaviour : MonoBehaviour
 	{
+		
 		[SerializeField] private Transform popup;
 		[SerializeField] private Transform fullScreen;
 

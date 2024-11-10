@@ -1,13 +1,10 @@
 {
-    "name": "Game.States",
+    "name": "Game.Windows",
     "rootNamespace": "",
     "references": [
-        "GUID:bd32278cce5e7d447bcb204e3407321a",
-        "GUID:e8021af6717f12742814c357b4d18ae5",
-        "GUID:603b693b11df40509fa4de6f068f0978",
         "GUID:4add8c25eba1fe24094b66cc3d2c6388",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+        "GUID:944b083ebf6664aa0bb03b3e90f1b68a",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
